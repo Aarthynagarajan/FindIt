@@ -18,12 +18,6 @@ app.use("/api", authRoutes);
 app.use("/api/items", itemRoutes);
 
 
-
-// test route
-app.get("/", (req, res) => {
-  res.send("Server running successfully");
-});
-
 app.get("/add-test-user", async (req, res) => {
   const newUser = new User({
     name: "Test Student",
@@ -38,6 +32,8 @@ app.get("/add-test-user", async (req, res) => {
   res.send("Test user added");
 });
 // serve frontend build
+const path = require("path");
+
 app.use(express.static(path.join(__dirname, "dist")));
 
 app.use((req, res, next) => {
@@ -47,6 +43,7 @@ app.use((req, res, next) => {
     next();
   }
 });
+
 
 
 // connect MongoDB
