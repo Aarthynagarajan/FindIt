@@ -13,7 +13,7 @@ function ViewFound(){
 
   const fetchItems = async ()=>{
     try{
-      const res = await axios.get("http://localhost:5000/api/items/found");
+      const res = await axios.get("/api/items/found");
       setItems(res.data);
     }catch{
       console.log("error fetching");

@@ -13,7 +13,7 @@ function ViewLost(){
 
   const fetchItems = async ()=>{
     try{
-      const res = await axios.get("http://localhost:5000/api/items/lost");
+      const res = await axios.get("/api/items/lost");
       setItems(res.data);
     }catch{
       console.log("error fetching");

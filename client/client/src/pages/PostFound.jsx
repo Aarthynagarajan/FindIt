@@ -36,7 +36,7 @@ function PostFound(){
     };
 
     try{
-      await axios.post("http://localhost:5000/api/items/found",data);
+      await axios.post("/api/items/found",data);
       setMsg("Found item posted successfully");
 
       setForm({

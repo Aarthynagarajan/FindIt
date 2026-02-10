@@ -36,7 +36,7 @@ function PostLost(){
     };
 
     try{
-      await axios.post("http://localhost:5000/api/items/lost",data);
+      await axios.post("/api/items/lost",data);
       setMsg("Lost item posted successfully");
 
       setForm({

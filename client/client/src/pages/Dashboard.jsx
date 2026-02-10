@@ -16,8 +16,9 @@ function Dashboard(){
   },[]);
 
   const fetchData = async ()=>{
-    const lost = await axios.get("http://localhost:5000/api/items/lost");
-    const found = await axios.get("http://localhost:5000/api/items/found");
+  const lost = await axios.get("/api/items/lost");
+  const found = await axios.get("/api/items/found");
+
 
     setLostCount(lost.data.length);
     setFoundCount(found.data.length);
