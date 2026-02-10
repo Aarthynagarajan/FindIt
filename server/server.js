@@ -32,7 +32,6 @@ app.get("/add-test-user", async (req, res) => {
   res.send("Test user added");
 });
 // serve frontend build
-const path = require("path");
 
 app.use(express.static(path.join(__dirname, "dist")));
 
