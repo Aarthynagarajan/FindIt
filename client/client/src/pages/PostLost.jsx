@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import axios from "axios";
 
@@ -46,8 +45,9 @@ function PostLost(){
         date:""
       });
 
-    }catch{
-      setMsg("Error posting item");
+    }catch(err){
+      console.log(err);
+      setMsg("Server error. Try again.");
     }
   }
 
@@ -65,7 +65,6 @@ function PostLost(){
 
         <div className="bg-[#0f172a] p-8 rounded-2xl border border-gray-800 shadow-xl">
 
-          {/* item name */}
           <label className="text-gray-400 text-sm">Item Name</label>
           <input
           value={form.itemName}
@@ -74,7 +73,6 @@ function PostLost(){
           onChange={(e)=>setForm({...form,itemName:e.target.value})}
           />
 
-          {/* description */}
           <label className="text-gray-400 text-sm">Description</label>
           <textarea
           value={form.description}
@@ -83,7 +81,6 @@ function PostLost(){
           onChange={(e)=>setForm({...form,description:e.target.value})}
           />
 
-          {/* location */}
           <label className="text-gray-400 text-sm">Last Seen Location</label>
           <input
           value={form.location}
@@ -92,7 +89,6 @@ function PostLost(){
           onChange={(e)=>setForm({...form,location:e.target.value})}
           />
 
-          {/* date */}
           <label className="text-gray-400 text-sm">Date Lost</label>
           <input
           type="date"
@@ -101,14 +97,12 @@ function PostLost(){
           onChange={(e)=>setForm({...form,date:e.target.value})}
           />
 
-          {/* button */}
           <button
           onClick={submit}
           className="w-full p-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:scale-[1.02] transition shadow-lg">
           Submit Lost Item
           </button>
 
-          {/* message */}
           {msg && (
             <p className="text-center mt-4 text-indigo-400">{msg}</p>
           )}

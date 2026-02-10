@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { data } from "react-router-dom";
 
 function Login(){
 
@@ -17,7 +16,7 @@ function Login(){
     }
 
     try{
-      const res = await axios.post("/api/login",data,{
+      const res = await axios.post("/api/login",{
         registerNo,
         password
       });
@@ -60,7 +59,6 @@ function Login(){
           Student Login Portal
         </p>
 
-        {/* IMPORTANT: autocomplete off */}
         <form autoComplete="off">
 
           <div className="mb-5">

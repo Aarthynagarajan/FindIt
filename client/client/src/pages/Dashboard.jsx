@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { data } from "react-router-dom";
 
 function Dashboard(){
 
@@ -17,15 +16,18 @@ function Dashboard(){
   },[]);
 
   const fetchData = async ()=>{
-  const lost = await axios.get("/api/items/lost",data);
-  const found = await axios.get("/api/items/found",data);
+    try{
+      const lost = await axios.get("/api/items/lost");
+      const found = await axios.get("/api/items/found");
 
+      setLostCount(lost.data.length);
+      setFoundCount(found.data.length);
 
-    setLostCount(lost.data.length);
-    setFoundCount(found.data.length);
-
-    const combined = [...lost.data,...found.data];
-    setRecent(combined.slice(-5).reverse());
+      const combined = [...lost.data,...found.data];
+      setRecent(combined.slice(-5).reverse());
+    }catch(err){
+      console.log("Error fetching dashboard data");
+    }
   }
 
   const logout = ()=>{

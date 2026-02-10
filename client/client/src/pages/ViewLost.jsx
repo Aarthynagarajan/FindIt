@@ -1,11 +1,10 @@
-
 import { useEffect,useState } from "react";
 import axios from "axios";
 
 function ViewLost(){
 
   const [items,setItems] = useState([]);
-  const [selected,setSelected] = useState(null); // popup state
+  const [selected,setSelected] = useState(null);
 
   useEffect(()=>{
     fetchItems();
@@ -15,8 +14,8 @@ function ViewLost(){
     try{
       const res = await axios.get("/api/items/lost");
       setItems(res.data);
-    }catch{
-      console.log("error fetching");
+    }catch(err){
+      console.log("Error fetching lost items");
     }
   }
 
@@ -25,7 +24,6 @@ function ViewLost(){
 
       <h1 className="text-3xl font-bold mb-8">Lost Items</h1>
 
-      {/* cards */}
       <div className="grid md:grid-cols-3 gap-8">
 
         {items.map((item,index)=>(
@@ -60,7 +58,7 @@ function ViewLost(){
 
       </div>
 
-      {/* POPUP MODAL */}
+      {/* popup */}
       {selected && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center">
 

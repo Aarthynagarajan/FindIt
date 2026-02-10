@@ -16,7 +16,6 @@ function Signup(){
 
   const register = async ()=>{
 
-    // validation
     if(!form.name || !form.registerNo || !form.department || !form.year || !form.phone || !form.password){
       setMsg("Please fill all fields");
       return;
@@ -41,8 +40,9 @@ function Signup(){
           password:""
         });
       }
-    }catch{
-      setMsg("Server error");
+    }catch(err){
+      console.log(err);
+      setMsg("Server error. Try again.");
     }
   }
 

@@ -1,11 +1,10 @@
-
 import { useEffect,useState } from "react";
 import axios from "axios";
 
 function ViewFound(){
 
   const [items,setItems] = useState([]);
-  const [selected,setSelected] = useState(null); // popup
+  const [selected,setSelected] = useState(null);
 
   useEffect(()=>{
     fetchItems();
@@ -15,8 +14,8 @@ function ViewFound(){
     try{
       const res = await axios.get("/api/items/found");
       setItems(res.data);
-    }catch{
-      console.log("error fetching");
+    }catch(err){
+      console.log("Error fetching found items");
     }
   }
 
@@ -59,7 +58,7 @@ function ViewFound(){
 
       </div>
 
-      {/* POPUP */}
+      {/* popup */}
       {selected && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center">
 
