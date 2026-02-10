@@ -4,6 +4,8 @@ const User = require("./models/user");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
+
 
 require("dotenv").config();
 
@@ -34,6 +36,12 @@ app.get("/add-test-user", async (req, res) => {
 
   await newUser.save();
   res.send("Test user added");
+});
+// serve frontend
+app.use(express.static(path.join(__dirname, "dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 
