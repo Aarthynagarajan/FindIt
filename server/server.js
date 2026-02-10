@@ -40,9 +40,10 @@ app.get("/add-test-user", async (req, res) => {
 // serve frontend
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.get("*", (req, res) => {
+app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
+
 
 
 // connect MongoDB
