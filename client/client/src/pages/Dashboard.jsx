@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { data } from "react-router-dom";
 
 function Dashboard(){
 
@@ -16,8 +17,8 @@ function Dashboard(){
   },[]);
 
   const fetchData = async ()=>{
-  const lost = await axios.get("/api/items/lost");
-  const found = await axios.get("/api/items/found");
+  const lost = await axios.get("/api/items/lost",data);
+  const found = await axios.get("/api/items/found",data);
 
 
     setLostCount(lost.data.length);

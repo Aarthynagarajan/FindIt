@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { data } from "react-router-dom";
 
 function Login(){
 
@@ -16,7 +17,7 @@ function Login(){
     }
 
     try{
-      const res = await axios.post("/api/login",{
+      const res = await axios.post("/api/login",data,{
         registerNo,
         password
       });
