@@ -37,13 +37,16 @@ app.get("/add-test-user", async (req, res) => {
   await newUser.save();
   res.send("Test user added");
 });
-// serve frontend
+// serve frontend build
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+app.use((req, res, next) => {
+  if (req.method === "GET") {
+    res.sendFile(path.join(__dirname, "dist", "index.html"));
+  } else {
+    next();
+  }
 });
-
 
 
 // connect MongoDB
